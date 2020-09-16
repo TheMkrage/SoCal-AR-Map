@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		7E89EB2525119E720069878A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E89EB2425119E720069878A /* AppDelegate.swift */; };
-		7E89EB2725119E720069878A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E89EB2625119E720069878A /* art.scnassets */; };
 		7E89EB2925119E720069878A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E89EB2825119E720069878A /* ViewController.swift */; };
 		7E89EB2C25119E720069878A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E89EB2A25119E720069878A /* Main.storyboard */; };
-		7E89EB2E25119E750069878A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E89EB2D25119E750069878A /* Assets.xcassets */; };
 		7E89EB3125119E750069878A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E89EB2F25119E750069878A /* LaunchScreen.storyboard */; };
+		7E89EB392511A1410069878A /* HuntingtonBeach.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7E89EB382511A1410069878A /* HuntingtonBeach.usdz */; };
+		7E89EB3A2511A5510069878A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E89EB2D25119E750069878A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7E89EB2125119E720069878A /* SoCal AR Map - ARKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SoCal AR Map - ARKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E89EB2425119E720069878A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7E89EB2625119E720069878A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		7E89EB2825119E720069878A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7E89EB2B25119E720069878A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E89EB2D25119E750069878A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E89EB3025119E750069878A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E89EB3225119E750069878A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E89EB382511A1410069878A /* HuntingtonBeach.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = HuntingtonBeach.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +57,9 @@
 			isa = PBXGroup;
 			children = (
 				7E89EB2425119E720069878A /* AppDelegate.swift */,
-				7E89EB2625119E720069878A /* art.scnassets */,
 				7E89EB2825119E720069878A /* ViewController.swift */,
 				7E89EB2A25119E720069878A /* Main.storyboard */,
+				7E89EB382511A1410069878A /* HuntingtonBeach.usdz */,
 				7E89EB2D25119E750069878A /* Assets.xcassets */,
 				7E89EB2F25119E750069878A /* LaunchScreen.storyboard */,
 				7E89EB3225119E750069878A /* Info.plist */,
@@ -125,9 +125,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E89EB2725119E720069878A /* art.scnassets in Resources */,
 				7E89EB3125119E750069878A /* LaunchScreen.storyboard in Resources */,
-				7E89EB2E25119E750069878A /* Assets.xcassets in Resources */,
+				7E89EB392511A1410069878A /* HuntingtonBeach.usdz in Resources */,
+				7E89EB3A2511A5510069878A /* Assets.xcassets in Resources */,
 				7E89EB2C25119E720069878A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +287,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2FKX4SDTGM;
 				INFOPLIST_FILE = "SoCal AR Map - ARKit/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,6 +306,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2FKX4SDTGM;
 				INFOPLIST_FILE = "SoCal AR Map - ARKit/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

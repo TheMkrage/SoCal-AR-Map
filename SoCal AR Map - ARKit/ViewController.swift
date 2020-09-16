@@ -10,66 +10,92 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
-
+class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
+    
     @IBOutlet var sceneView: ARSCNView!
+    
+    /// A serial queue for thread safety when modifying the SceneKit node graph.
+    let updateQueue = DispatchQueue(label: Bundle.main.bundleIdentifier! +
+        ".serialSceneKitQueue")
+    
+    /// Convenience accessor for the session owned by ARSCNView.
+    var session: ARSession {
+        return sceneView.session
+    }
+    
+    // MARK: - View Controller Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
         sceneView.delegate = self
-        
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
-        
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
-        sceneView.scene = scene
+        sceneView.session.delegate = self
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
 
-        // Run the view's session
-        sceneView.session.run(configuration)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Prevent the screen from being dimmed to avoid interuppting the AR experience.
+        UIApplication.shared.isIdleTimerDisabled = true
+
+        // Start the AR experience
+        resetTracking()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Pause the view's session
-        sceneView.session.pause()
+
+        session.pause()
     }
 
-    // MARK: - ARSCNViewDelegate
+    // MARK: - Session management (Image detection setup)
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
+    /// Prevents restarting the session while a restart is in progress.
+    var isRestartAvailable = true
+
+    /// Creates a new AR configuration to run on the `session`.
+    /// - Tag: ARReferenceImage-Loading
+    func resetTracking() {
         
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
+        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "HBRefs", bundle: nil) else {
+            fatalError("Missing expected asset catalog resources.")
+        }
         
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.detectionImages = referenceImages
+        session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+
+    // MARK: - ARSCNViewDelegate (Image detection results)
+    /// - Tag: ARImageAnchor-Visualizing
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let imageAnchor = anchor as? ARImageAnchor else { return }
+        let referenceImage = imageAnchor.referenceImage
+        updateQueue.async {
+            guard let usdzURL = Bundle.main.url(forResource: "HuntingtonBeach", withExtension: "usdz"),
+                let hbNode = SCNReferenceNode(url: usdzURL) else {
+                return
+            }
+            hbNode.load()
+            print(hbNode.boundingBox.max.x)
+            print(referenceImage.physicalSize.width)
+            let threeDimensionalAssetToRealReferenceImageScale = referenceImage.physicalSize.width / CGFloat(hbNode.boundingBox.max.x)
+            hbNode.scale = SCNVector3(threeDimensionalAssetToRealReferenceImageScale, threeDimensionalAssetToRealReferenceImageScale, threeDimensionalAssetToRealReferenceImageScale) 
+            print(threeDimensionalAssetToRealReferenceImageScale)
+            
+            // Add the plane visualization to the scene.
+            node.addChildNode(hbNode)
+        }
+    }
+
+    var imageHighlightAction: SCNAction {
+        return .sequence([
+            .wait(duration: 0.25),
+            .fadeOpacity(to: 0.85, duration: 0.25),
+            .fadeOpacity(to: 0.15, duration: 0.25),
+            .fadeOpacity(to: 0.85, duration: 0.25),
+            .fadeOut(duration: 0.5),
+            .removeFromParentNode()
+        ])
     }
 }
