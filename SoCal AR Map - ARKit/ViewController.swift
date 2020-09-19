@@ -93,7 +93,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         print(threeDimensionalAssetToRealReferenceImageScale)
         
         switch resource {
-        case "HuntingtonBeach", "LongBeach":
+        case "HuntingtonBeach", "LongBeach", "Anaheim", "SantaMonica":
             hbNode.light = SCNLight()
 
             hbNode.light?.intensity = 1000
