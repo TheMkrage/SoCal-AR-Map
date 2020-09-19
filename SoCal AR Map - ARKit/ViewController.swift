@@ -103,6 +103,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         let threeDimensionalAssetToRealReferenceImageScale = referenceWidth / CGFloat(hbNode.boundingBox.max.x)
         hbNode.scale = SCNVector3(threeDimensionalAssetToRealReferenceImageScale, threeDimensionalAssetToRealReferenceImageScale, threeDimensionalAssetToRealReferenceImageScale)
         print(threeDimensionalAssetToRealReferenceImageScale)
+        hbNode.light = SCNLight()
+
+        hbNode.light?.intensity = 1000
+        hbNode.castsShadow = false
+        hbNode.position = SCNVector3Zero
+        hbNode.light?.type = SCNLight.LightType.ambient
+        hbNode.light?.color = UIColor.white
         
         return hbNode
     }
