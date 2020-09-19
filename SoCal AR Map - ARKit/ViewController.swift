@@ -73,18 +73,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         let referenceImage = imageAnchor.referenceImage
         
         let nodeToAdd: SCNNode? = getNode(for: referenceImage.name ?? "", referenceWidth: referenceImage.physicalSize.width)
-//        switch referenceImage.name {
-//        case "HuntingtonBeach":
-//            nodeToAdd
-//        case "LongBeach":
-//            nodeToAdd = getNode(for: referenceImage.name ?? "", referenceWidth: referenceImage.physicalSize.width)
-//        case "HuntingtonBeach":
-//            nodeToAdd = getNode(for: referenceImage.name ?? "", referenceWidth: referenceImage.physicalSize.width)
-//        case .none:
-//            break
-//        case .some(_):
-//            break
-//        }
         updateQueue.async {
             guard let nodeToAdd = nodeToAdd else {
                 return
@@ -103,14 +91,19 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         let threeDimensionalAssetToRealReferenceImageScale = referenceWidth / CGFloat(hbNode.boundingBox.max.x)
         hbNode.scale = SCNVector3(threeDimensionalAssetToRealReferenceImageScale, threeDimensionalAssetToRealReferenceImageScale, threeDimensionalAssetToRealReferenceImageScale)
         print(threeDimensionalAssetToRealReferenceImageScale)
-        hbNode.light = SCNLight()
-
-        hbNode.light?.intensity = 1000
-        hbNode.castsShadow = false
-        hbNode.position = SCNVector3Zero
-        hbNode.light?.type = SCNLight.LightType.ambient
-        hbNode.light?.color = UIColor.white
         
+        switch resource {
+        case "HuntingtonBeach", "LongBeach":
+            hbNode.light = SCNLight()
+
+            hbNode.light?.intensity = 1000
+            hbNode.castsShadow = true
+            hbNode.position = SCNVector3Zero
+            hbNode.light?.type = SCNLight.LightType.directional
+            hbNode.light?.color = UIColor.white
+        default:
+            break
+        }
         return hbNode
     }
 
