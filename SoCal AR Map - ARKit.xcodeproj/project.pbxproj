@@ -13,6 +13,8 @@
 		7E89EB3125119E750069878A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E89EB2F25119E750069878A /* LaunchScreen.storyboard */; };
 		7E89EB392511A1410069878A /* HuntingtonBeach.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7E89EB382511A1410069878A /* HuntingtonBeach.usdz */; };
 		7E89EB3A2511A5510069878A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E89EB2D25119E750069878A /* Assets.xcassets */; };
+		7EF60D8425169DB00051D0EB /* LongBeach.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7EF60D8325169DB00051D0EB /* LongBeach.usdz */; };
+		7EF60D8625169E300051D0EB /* Irvine.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7EF60D8525169E300051D0EB /* Irvine.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		7E89EB3025119E750069878A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E89EB3225119E750069878A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E89EB382511A1410069878A /* HuntingtonBeach.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = HuntingtonBeach.usdz; sourceTree = "<group>"; };
+		7EF60D8325169DB00051D0EB /* LongBeach.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = LongBeach.usdz; sourceTree = "<group>"; };
+		7EF60D8525169E300051D0EB /* Irvine.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Irvine.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		7E89EB2325119E720069878A /* SoCal AR Map - ARKit */ = {
 			isa = PBXGroup;
 			children = (
+				7EF60D8525169E300051D0EB /* Irvine.usdz */,
+				7EF60D8325169DB00051D0EB /* LongBeach.usdz */,
 				7E89EB2425119E720069878A /* AppDelegate.swift */,
 				7E89EB2825119E720069878A /* ViewController.swift */,
 				7E89EB2A25119E720069878A /* Main.storyboard */,
@@ -125,9 +131,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EF60D8425169DB00051D0EB /* LongBeach.usdz in Resources */,
 				7E89EB3125119E750069878A /* LaunchScreen.storyboard in Resources */,
 				7E89EB392511A1410069878A /* HuntingtonBeach.usdz in Resources */,
 				7E89EB3A2511A5510069878A /* Assets.xcassets in Resources */,
+				7EF60D8625169E300051D0EB /* Irvine.usdz in Resources */,
 				7E89EB2C25119E720069878A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

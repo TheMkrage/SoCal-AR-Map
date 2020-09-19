@@ -57,7 +57,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     /// - Tag: ARReferenceImage-Loading
     func resetTracking() {
         
-        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "HBRefs", bundle: nil) else {
+        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "ImageRefs", bundle: nil) else {
             fatalError("Missing expected asset catalog resources.")
         }
         
@@ -71,21 +71,40 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let imageAnchor = anchor as? ARImageAnchor else { return }
         let referenceImage = imageAnchor.referenceImage
+        
+        let nodeToAdd: SCNNode? = getNode(for: referenceImage.name ?? "", referenceWidth: referenceImage.physicalSize.width)
+//        switch referenceImage.name {
+//        case "HuntingtonBeach":
+//            nodeToAdd
+//        case "LongBeach":
+//            nodeToAdd = getNode(for: referenceImage.name ?? "", referenceWidth: referenceImage.physicalSize.width)
+//        case "HuntingtonBeach":
+//            nodeToAdd = getNode(for: referenceImage.name ?? "", referenceWidth: referenceImage.physicalSize.width)
+//        case .none:
+//            break
+//        case .some(_):
+//            break
+//        }
         updateQueue.async {
-            guard let usdzURL = Bundle.main.url(forResource: "HuntingtonBeach", withExtension: "usdz"),
-                let hbNode = SCNReferenceNode(url: usdzURL) else {
+            guard let nodeToAdd = nodeToAdd else {
                 return
             }
-            hbNode.load()
-            print(hbNode.boundingBox.max.x)
-            print(referenceImage.physicalSize.width)
-            let threeDimensionalAssetToRealReferenceImageScale = referenceImage.physicalSize.width / CGFloat(hbNode.boundingBox.max.x)
-            hbNode.scale = SCNVector3(threeDimensionalAssetToRealReferenceImageScale, threeDimensionalAssetToRealReferenceImageScale, threeDimensionalAssetToRealReferenceImageScale) 
-            print(threeDimensionalAssetToRealReferenceImageScale)
-            
             // Add the plane visualization to the scene.
-            node.addChildNode(hbNode)
+            node.addChildNode(nodeToAdd)
         }
+    }
+    
+    private func getNode(for resource: String, referenceWidth: CGFloat) -> SCNNode? {
+        guard let usdzURL = Bundle.main.url(forResource: resource, withExtension: "usdz"),
+            let hbNode = SCNReferenceNode(url: usdzURL) else {
+            return nil
+        }
+        hbNode.load()
+        let threeDimensionalAssetToRealReferenceImageScale = referenceWidth / CGFloat(hbNode.boundingBox.max.x)
+        hbNode.scale = SCNVector3(threeDimensionalAssetToRealReferenceImageScale, threeDimensionalAssetToRealReferenceImageScale, threeDimensionalAssetToRealReferenceImageScale)
+        print(threeDimensionalAssetToRealReferenceImageScale)
+        
+        return hbNode
     }
 
     var imageHighlightAction: SCNAction {
