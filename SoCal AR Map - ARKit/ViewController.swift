@@ -93,7 +93,16 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         print(threeDimensionalAssetToRealReferenceImageScale)
         
         switch resource {
-        case "HuntingtonBeach", "LongBeach", "Anaheim", "SantaMonica":
+        case "Irvine", "LosAngeles":
+            hbNode.light = SCNLight()
+
+            hbNode.light?.intensity = 1000
+            hbNode.castsShadow = true
+            hbNode.position = SCNVector3Zero
+            hbNode.light?.type = SCNLight.LightType.ambient
+            hbNode.light?.color = UIColor.white
+
+        default:
             hbNode.light = SCNLight()
 
             hbNode.light?.intensity = 1000
@@ -101,8 +110,6 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             hbNode.position = SCNVector3Zero
             hbNode.light?.type = SCNLight.LightType.directional
             hbNode.light?.color = UIColor.white
-        default:
-            break
         }
         return hbNode
     }

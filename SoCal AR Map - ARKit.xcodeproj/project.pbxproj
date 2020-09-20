@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7E5914FB2516C2F900FDB287 /* SantaMonica.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7E5914F92516C2F800FDB287 /* SantaMonica.usdz */; };
 		7E5914FC2516C2F900FDB287 /* Anaheim.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7E5914FA2516C2F800FDB287 /* Anaheim.usdz */; };
+		7E5915002516D87E00FDB287 /* LosAngeles.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7E5914FF2516D87E00FDB287 /* LosAngeles.usdz */; };
 		7E89EB2525119E720069878A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E89EB2425119E720069878A /* AppDelegate.swift */; };
 		7E89EB2925119E720069878A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E89EB2825119E720069878A /* ViewController.swift */; };
 		7E89EB2C25119E720069878A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E89EB2A25119E720069878A /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		7E5914F92516C2F800FDB287 /* SantaMonica.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = SantaMonica.usdz; sourceTree = "<group>"; };
 		7E5914FA2516C2F800FDB287 /* Anaheim.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Anaheim.usdz; sourceTree = "<group>"; };
+		7E5914FF2516D87E00FDB287 /* LosAngeles.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = LosAngeles.usdz; path = "../../../../Creative Cloud Files/LosAngeles.usdz"; sourceTree = "<group>"; };
 		7E89EB2125119E720069878A /* SoCal AR Map - ARKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SoCal AR Map - ARKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E89EB2425119E720069878A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E89EB2825119E720069878A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				7E5914FA2516C2F800FDB287 /* Anaheim.usdz */,
 				7E5914F92516C2F800FDB287 /* SantaMonica.usdz */,
 				7EF60D8525169E300051D0EB /* Irvine.usdz */,
+				7E5914FF2516D87E00FDB287 /* LosAngeles.usdz */,
 				7EF60D8325169DB00051D0EB /* LongBeach.usdz */,
 				7E89EB2425119E720069878A /* AppDelegate.swift */,
 				7E89EB2825119E720069878A /* ViewController.swift */,
@@ -141,6 +144,7 @@
 				7E89EB3125119E750069878A /* LaunchScreen.storyboard in Resources */,
 				7E5914FB2516C2F900FDB287 /* SantaMonica.usdz in Resources */,
 				7E5914FC2516C2F900FDB287 /* Anaheim.usdz in Resources */,
+				7E5915002516D87E00FDB287 /* LosAngeles.usdz in Resources */,
 				7E89EB392511A1410069878A /* HuntingtonBeach.usdz in Resources */,
 				7E89EB3A2511A5510069878A /* Assets.xcassets in Resources */,
 				7EF60D8625169E300051D0EB /* Irvine.usdz in Resources */,
