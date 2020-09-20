@@ -93,13 +93,54 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         print(threeDimensionalAssetToRealReferenceImageScale)
         
         switch resource {
-        case "Irvine", "LosAngeles":
+        case "Irvine":
             hbNode.light = SCNLight()
 
             hbNode.light?.intensity = 1000
             hbNode.castsShadow = true
             hbNode.position = SCNVector3Zero
             hbNode.light?.type = SCNLight.LightType.ambient
+            hbNode.light?.color = UIColor.white
+        case "HuntingtonBeach":
+            hbNode.light = SCNLight()
+
+            hbNode.light?.intensity = 800
+            hbNode.castsShadow = true
+            hbNode.position = .init(0.0, 0.0, -0.015)
+            hbNode.light?.type = SCNLight.LightType.directional
+            hbNode.light?.color = UIColor.white
+        case "LosAngeles":
+            hbNode.light = SCNLight()
+
+            hbNode.light?.intensity = 100
+            hbNode.castsShadow = true
+            hbNode.position = SCNVector3Zero
+            hbNode.light?.type = SCNLight.LightType.ambient
+            hbNode.light?.color = UIColor.gray
+        case "LongBeach":
+            hbNode.light = SCNLight()
+
+            hbNode.light?.intensity = 500
+            hbNode.castsShadow = true
+            hbNode.position = SCNVector3Zero
+            hbNode.light?.type = SCNLight.LightType.directional
+            hbNode.light?.color = UIColor.white
+            hbNode.scale = SCNVector3(threeDimensionalAssetToRealReferenceImageScale/2.0, threeDimensionalAssetToRealReferenceImageScale/2.0, threeDimensionalAssetToRealReferenceImageScale/2.0)
+        case "SantaMonica":
+            hbNode.light = SCNLight()
+
+            hbNode.light?.intensity = 400
+            hbNode.castsShadow = true
+            hbNode.position = SCNVector3Zero
+            hbNode.light?.type = SCNLight.LightType.directional
+            hbNode.light?.color = UIColor.white
+        case "Anaheim":
+            hbNode.light = SCNLight()
+
+            hbNode.light?.intensity = 1100
+            hbNode.castsShadow = true
+            //hbNode.position = SCNVector3Zero
+            hbNode.light?.type = SCNLight.LightType.directional
             hbNode.light?.color = UIColor.white
 
         default:
