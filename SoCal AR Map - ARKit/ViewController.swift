@@ -63,6 +63,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         
         let configuration = ARWorldTrackingConfiguration()
         configuration.detectionImages = referenceImages
+        configuration.isLightEstimationEnabled = true
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
 
@@ -112,7 +113,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         case "LosAngeles":
             hbNode.light = SCNLight()
 
-            hbNode.light?.intensity = 100
+            hbNode.light?.intensity = 400
             hbNode.castsShadow = true
             hbNode.position = SCNVector3Zero
             hbNode.light?.type = SCNLight.LightType.ambient
@@ -139,7 +140,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
             hbNode.light?.intensity = 1100
             hbNode.castsShadow = true
-            //hbNode.position = SCNVector3Zero
+            hbNode.position = .init(0.01, -0.03, 0.0)
             hbNode.light?.type = SCNLight.LightType.directional
             hbNode.light?.color = UIColor.white
 
