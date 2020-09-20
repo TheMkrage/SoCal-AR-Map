@@ -57,7 +57,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     /// - Tag: ARReferenceImage-Loading
     func resetTracking() {
         
-        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "ImageRefs", bundle: nil) else {
+        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "ImageRefs-Distorted", bundle: nil) else {
             fatalError("Missing expected asset catalog resources.")
         }
         
